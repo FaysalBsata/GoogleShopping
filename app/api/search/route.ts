@@ -1,4 +1,4 @@
-import { SearchParams } from '@/typings';
+import { PageResults, SearchParams } from '@/typings';
 import { NextResponse } from 'next/server';
 export async function POST(request: Request) {
   const { searchTerm, pages, ...params } = await request.json();
@@ -38,6 +38,6 @@ export async function POST(request: Request) {
     }),
   });
   const data = await response.json();
-  const pageResult: PageResult[] = data.results;
+  const pageResult: PageResults[] = data.results;
   return NextResponse.json(pageResult);
 }
